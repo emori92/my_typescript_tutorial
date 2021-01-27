@@ -1,0 +1,14 @@
+{
+  "name": "emori-typescript",
+  "version": "1.0.0",
+  "description": "my TypeScript tutorial",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "emori92",
+  "license": "ISC",
+  "devDependencies": {
+    "typescript": "^4.1.3"
+  }
+}
