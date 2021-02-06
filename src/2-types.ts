@@ -57,10 +57,20 @@ notSure = false;
 console.log(notSure);
 
 // any: あらゆるobjectを受ける
-declare function getValue(key: string): any;
-// get string
-const str: string = getValue("myString");
+// declare function getValue(key: string): any;
+// const str: string = getValue("myString");
 
 // anyとunknownの違い
 // unknown: プロパティ、メソッド使用可能
 // any: unknown: プロパティ、メソッド使用不可
+
+// void: 型を持たない
+function warnUser(): void {
+  console.log("This is my warning message");
+}
+// voidはnullかundefinedになる
+let voidTest: void = undefined;
+console.log(voidTest);
+// null
+voidTest = null;
+console.log(voidTest);
