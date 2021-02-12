@@ -83,6 +83,63 @@ numList2;
 
 // declare
 // $が未定義なのでエラー
-$('.awesome').show();
+// $('.awesome').show();
 // declareでグローバル変数の存在を伝える
-declare var $: any;
+// declare var $: any;
+
+// 非同期処理
+const char1: string = '非同期処理を開始';
+const char2: string = '非同期処理を実行';
+const char3: string = '非同期処理を経過\n';
+// 非同期処理を開始
+p(`\n1. ${char1}`);
+// setTimeout: 1秒後に実行
+setTimeout(() => {
+  // 非同期処理を実行
+  p(`1. ${char2}`);
+}, 1000);
+// 非同期処理を経過
+p(`1. ${char3}`);
+
+// Promise: 旧
+const url: string = 'https://example.com';
+// function
+const returnResponse = async (url: string, num=2): Promise<string> => {
+  p(`\n${num}. ${char1}`);
+  return  `return "response of ${url}"`;
+};
+const returnJson = async (response: string): Promise<string> => {
+  return `{"jsonTest": ${response}}`;
+};
+// run function
+returnResponse(url).then((resp: string): string => {
+  // 非同期処理を実行
+  p(`2. ${char2}\n`);
+  // return
+  return `{response: ${resp}}`
+});
+// 非同期処理を経過
+p(`2. ${char3}`);
+
+// Promise: 新
+const newResponse = async (url: string) => {
+  const num: number = 3;
+  // 非同期処理を実行
+  const resp: string = await returnResponse(url, num);
+  const json: string = await returnJson(resp);
+  // log
+  p(`${num}. ${char2}`);
+  // return
+  return json;
+};
+
+const jsonTest = newResponse(url);
+// log
+p(jsonTest);
+// 非同期処理を経過
+p(`3. ${char3}: ${jsonTest}`);
+
+// 1秒後のlog
+setTimeout(() => {
+  p(jsonTest);
+}, 1010);
