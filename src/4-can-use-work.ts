@@ -143,3 +143,33 @@ p(`3. ${char3}: ${jsonTest}`);
 setTimeout(() => {
   p(jsonTest);
 }, 1010);
+
+// DEBUG: console.log({ variable }); => 変数名と値が出力される
+console.log({ url });
+
+// console.table/dir
+console.table({ url });
+console.dir({ url });
+
+// Generics: 何らかの型を受け取る
+const setArray = <T>(arg: T, num: number): Array<T> => {
+  // create return obj
+  const result: Array<T> = [];
+  // add obj
+  for (let i = 0; i < num; i++) {2
+    result.push(arg);
+  }
+  // return
+  return result;
+};
+// run
+const numArray = setArray(44, 10);
+p(numArray);
+
+// ジェネリクスの型を推定
+const getNapier = <N extends Math>(arg: N): number => {
+  return arg.E;
+}
+// run
+const napier = getNapier(Math);
+p({ napier });
